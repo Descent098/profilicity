@@ -80,20 +80,36 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <h4 class="card-title">Basics</h4>
-                                            <h6 class="text-muted card-subtitle mb-2">Subtitle</h6>
-                                            <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                                            <h6 class="text-muted card-subtitle mb-2">Let us know a bit about you</h6>
+                                            <p class="card-text">For the time being all fields are required!</p>
                                         </div>
-                                        <form><label class="form-label" style="margin-left: 5%;" for="name">Name</label><input id="name" class="form-control" type="text" style="/*width: 90%;*//*margin-left: 5%;*//*margin-bottom: 8px;*/" name="name" placeholder="name" required=""><label class="form-label" style="margin-left: 5%;" for="github">GitHub</label><input id="github" class="form-control form-control-sm" type="text" style="/*width: 90%;*//*margin-left: 5%;*//*margin-bottom: 8px;*/" placeholder="https://github.com/user" name="github" pattern="^http[s]?:\/\/(www\.)?(.*)?\/?(.)*" required=""><label class="form-label" style="margin-left: 5%;" for="instagram">Instagram</label><input id="instagram" class="form-control form-control-sm" type="text" style="/*width: 90%;*//*margin-left: 5%;*//*margin-bottom: 8px;*/" placeholder="https://instagram.com/user" name="instagram" pattern="^http[s]?:\/\/(www\.)?(.*)?\/?(.)*" required=""><label class="form-label" style="margin-left: 5%;" for="theme">Theme</label><select class="form-select" name="theme">
-                                                <option id="theme" value="glass" selected="">Glass Portfolio</option>
-                                            </select></form>
+                                        <form>
+                                            <label class="form-label" style="margin-left: 5%;" for="name">Name</label>
+                                                <input onchange="changeFormElement(this)" id="name" class="form-control" type="text" style="/*width: 90%;*//*margin-left: 5%;*//*margin-bottom: 8px;*/" name="name" placeholder="name" required="">
+                                            <label class="form-label" style="margin-left: 5%;" for="github">GitHub</label>
+                                                <input id="github" class="form-control form-control-sm" type="text" style="/*width: 90%;*//*margin-left: 5%;*//*margin-bottom: 8px;*/" placeholder="https://github.com/user" name="github" pattern="^http[s]?:\/\/(www\.)?(.*)?\/?(.)*" required="">
+                                            <label class="form-label" style="margin-left: 5%;" for="instagram">Instagram</label>
+                                                <input id="instagram" class="form-control form-control-sm" type="text" style="/*width: 90%;*//*margin-left: 5%;*//*margin-bottom: 8px;*/" placeholder="https://instagram.com/user" name="instagram" pattern="^http[s]?:\/\/(www\.)?(.*)?\/?(.)*" required="">
+                                            <label class="form-label" style="margin-left: 5%;" for="theme">Theme</label>
+                                                <select class="form-select" name="theme">
+                                                    <option id="theme" value="glass" selected="">Glass Portfolio</option>
+                                                </select>
+                                            <div style="margin-left:5%;">
+                                                <h3>Avatar</h3>
+                                                <img id="avatar-display" src="https://avatars.dicebear.com/api/identicon/name.svg" height="200px" width="200px" style="border-radius:50%; object-fit:cover;">
+                                                <br>
+                                                <label for="myfile">Upload an avatar:</label>
+                                            </div>
+                                            <input onchange="changeFormElement(this)" type="file" id="avatar" name="avatar">
+                                        </form>
                                     </div>
                                 </div>
                                 <div class="tab-pane" role="tabpanel" id="description">
                                     <div class="card">
                                         <div class="card-body">
                                             <h4 class="card-title">Description</h4>
-                                            <h6 class="text-muted card-subtitle mb-2">...</h6>
-                                            <p class="card-text">...</p>
+                                            <h6 class="text-muted card-subtitle mb-2">Fill out more about yourself</h6>
+                                            <p class="card-text">The text below this is editable, and you can check the preview tab to see how it looks</p>
 
                                             <div id="editorjs"></div>
                                         </div>
