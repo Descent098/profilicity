@@ -14,3 +14,5 @@ An in-browser static site builder. Profilicity aims to allow people with no deve
 - [ ] Allow users to write description that will be embedded (editor js)
 - [ ] Make which social media to include optional
 - [ ] Allow user to add their own imagbe
+- [ ] Fix user profile dropdown
+- [ ] Allow JSOn imports
