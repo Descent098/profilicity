@@ -13,6 +13,9 @@ const glassTheme = `<!DOCTYPE html>
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
             color: white;
         }
+        h2, h3, h4{
+            padding-top: 1vh !important;
+        }
         .background{
             background: rgba(255, 255, 255, 0.24);
             border-radius: 16px;
@@ -87,6 +90,10 @@ const glassTheme = `<!DOCTYPE html>
         .nav ul li{
             padding: 1rem;
             font-size: 2em;
+        }
+
+        .nav img{
+            height: 25vh
         }
 
         /* Tablets/laptops */
@@ -230,12 +237,11 @@ const glassTheme = `<!DOCTYPE html>
     </style>
 </head>
 <body>
-{{theme-variant}}
-    <img id="background-image" class="background-image" src="{{theme-variant | safe}}">
+    <img id="background-image" class="background-image" src="{{variant}}">
 
     <div class="background">
         <div class="nav">
-            <img src="https://avatars.githubusercontent.com/u/22761705?v=4" style="border-radius: 50%; max-height: 25vh;">
+            <img src="https://avatars.dicebear.com/api/identicon/{{name}}.svg" style="border-radius: 50%; max-height: 25vh;">
             <h1>{{name}}</h1>
             <ul>
                 <li><a href="{{github}}" target="_blank"><i class="bi bi-github"></i></a></li>

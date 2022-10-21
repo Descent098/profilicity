@@ -84,57 +84,58 @@
                                             <p class="card-text">For the time being all fields are required!</p>
                                         </div>
                                         <form>
-                                            <label class="form-label" style="margin-left: 5%;" for="name">Name</label>
-                                                <input onchange="changeFormElement(this)" id="name" class="form-control" type="text" style="/*width: 90%;*//*margin-left: 5%;*//*margin-bottom: 8px;*/" name="name" placeholder="name" required="">
-                                            <label class="form-label" style="margin-left: 5%;" for="github">GitHub</label>
-                                                <input id="github" class="form-control form-control-sm" type="text" style="/*width: 90%;*//*margin-left: 5%;*//*margin-bottom: 8px;*/" placeholder="https://github.com/user" name="github" pattern="^http[s]?:\/\/(www\.)?(.*)?\/?(.)*" required="">
-                                            <label class="form-label" style="margin-left: 5%;" for="instagram">Instagram</label>
-                                                <input id="instagram" class="form-control form-control-sm" type="text" style="/*width: 90%;*//*margin-left: 5%;*//*margin-bottom: 8px;*/" placeholder="https://instagram.com/user" name="instagram" pattern="^http[s]?:\/\/(www\.)?(.*)?\/?(.)*" required="">
-                                            <label class="form-label" style="margin-left: 5%;" for="theme">Theme</label>
-                                                <select  class="form-select" name="theme" id="theme">
+                                            <label class="form-label" for="name">Name</label>
+                                                <input oninput="changeFormElement(this)" id="name" class="form-control" type="text" name="name" placeholder="name" required="">
+                                            <label class="form-label" for="github">GitHub</label>
+                                                <input oninput="changeFormElement(this)" id="github" class="form-control form-control-sm" type="text" placeholder="https://github.com/user" name="github" pattern="^http[s]?:\/\/(www\.)?(.*)?\/?(.)*" required="">
+                                            <label class="form-label" for="instagram">Instagram</label>
+                                                <input oninput="changeFormElement(this)" id="instagram" class="form-control form-control-sm" type="text" placeholder="https://instagram.com/user" name="instagram" pattern="^http[s]?:\/\/(www\.)?(.*)?\/?(.)*" required="">
+                                            <label class="form-label" for="theme">Theme</label>
+                                                <select  class="form-select" name="theme" id="theme" onchange="changeFormElement(this)">
                                                     <option id="glass" value="glass" selected="">Glass Portfolio</option>
                                                 </select>
 
-                                                <select onchange="changeFormElement(this)"  class="form-select" name="theme-variant" id="theme-variant">
-                                                    <option value="Green" selected="selected" style="color: black;">Green 1</option>
-                                                    <option value="Green-2" style="color: black;">Green 2</option>
-                                                    <option value="Green-3" style="color: black;">Green 3</option>
-                                                    <option value="Green-4" style="color: black;">Green 4</option>
-                                                    <option value="Green-5" style="color: black;">Green 5</option>
-                                                    <option value="Green-6" style="color: black;">Green 6</option>
+                                                <select onchange="changeFormElement(this)"  class="form-select" name="variant" id="variant">
+                                                    <option value="Green" selected="selected">Green 1</option>
+                                                    <option value="Green-2">Green 2</option>
+                                                    <option value="Green-3">Green 3</option>
+                                                    <option value="Green-4">Green 4</option>
+                                                    <option value="Green-5">Green 5</option>
+                                                    <option value="Green-6">Green 6</option>
 
-                                                    <option value="Mountain" style="color: black;">Mountain </option>
-                                                    <option value="Mountain-2" style="color: black;">Mountain 2</option>
-                                                    <option value="Mountain-3" style="color: black;">Mountain 3</option>
-                                                    <option value="Mountain-4" style="color: black;">Mountain 4</option>
-                                                    <option value="Mountain-5" style="color: black;">Mountain 5</option>
-                                                    <option value="Mountain-6" style="color: black;">Mountain 6</option>
-                                                    <option value="Mountain-7" style="color: black;">Mountain 7</option>
-                                                    <option value="Mountain-8" style="color: black;">Mountain 8</option>
-                                                    <option value="Mountain-9" style="color: black;">Mountain 9</option>
+                                                    <option value="Mountain">Mountain </option>
+                                                    <option value="Mountain-2">Mountain 2</option>
+                                                    <option value="Mountain-3">Mountain 3</option>
+                                                    <option value="Mountain-4">Mountain 4</option>
+                                                    <option value="Mountain-5">Mountain 5</option>
+                                                    <option value="Mountain-6">Mountain 6</option>
+                                                    <option value="Mountain-7">Mountain 7</option>
+                                                    <option value="Mountain-8">Mountain 8</option>
+                                                    <option value="Mountain-9">Mountain 9</option>
                                     
-                                                    <option style="color: black;" value="Space">Space</option>
-                                                    <option style="color: black;" value="Space-1">Space-1</option>
-                                                    <option style="color: black;" value="Space-2">Space-2</option>
-                                                    <option style="color: black;" value="Space-3">Space-3</option>
-                                                    <option style="color: black;" value="Space-4">Space-4</option>
-                                                    <option style="color: black;" value="Space-5">Space-5</option>
-                                                    <option style="color: black;" value="Space-6">Space-6</option>
-                                                    <option style="color: black;" value="Space-7">Space-7</option>
-                                                    <option style="color: black;" value="Space-8">Space-8</option>
-                                                    <option style="color: black;" value="Space-9">Space-9</option>
-                                                    <option style="color: black;" value="Space-10">Space-10</option>
-                                                    <option style="color: black;" value="Space-11">Space-11</option>
-                                                    <option style="color: black;" value="Space-12">Space-12</option>
-                                                    <option style="color: black;" value="Space-13">Space-13</option>
-                                                    <option style="color: black;" value="Space-14">Space-14</option>
-                                                    <option style="color: black;" value="Space-15">Space-15</option>
+                                                    <option value="Space">Space</option>
+                                                    <option value="Space-1">Space-1</option>
+                                                    <option value="Space-2">Space-2</option>
+                                                    <option value="Space-3">Space-3</option>
+                                                    <option value="Space-4">Space-4</option>
+                                                    <option value="Space-5">Space-5</option>
+                                                    <option value="Space-6">Space-6</option>
+                                                    <option value="Space-7">Space-7</option>
+                                                    <option value="Space-8">Space-8</option>
+                                                    <option value="Space-9">Space-9</option>
+                                                    <option value="Space-10">Space-10</option>
+                                                    <option value="Space-11">Space-11</option>
+                                                    <option value="Space-12">Space-12</option>
+                                                    <option value="Space-13">Space-13</option>
+                                                    <option value="Space-14">Space-14</option>
+                                                    <option value="Space-15">Space-15</option>
                                                 </select>
                                             <div style="margin-left:5%;">
                                                 <h3>Avatar</h3>
                                                 <img id="avatar-display" src="https://avatars.dicebear.com/api/identicon/name.svg" height="200px" width="200px" style="border-radius:50%; object-fit:cover;">
                                                 <br>
                                                 <label for="myfile">Upload an avatar:</label>
+                                                <br>
                                                 <input onchange="changeFormElement(this)" type="file" id="avatar" name="avatar">
 
                                             </div>
@@ -147,7 +148,7 @@
                                             <h4 class="card-title">Description</h4>
                                             <h6 class="text-muted card-subtitle mb-2">Fill out more about yourself</h6>
                                             <p class="card-text">The text below this is editable, and you can check the preview tab to see how it looks</p>
-
+                                            <hr style="width: 95%; margin: 0 auto;">
                                             <div id="editorjs"></div>
                                         </div>
                                     </div>
@@ -156,7 +157,13 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <h4 class="card-title">Preview</h4>
-                                            <div style="box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.23);min-height: 90vh;">
+                                            <div id="preview-buttons">
+                                                <button class="btn btn-primary" onclick="download()">Export</button>
+                                                <button id="full-size-preview" class="btn btn-outline-primary" onclick="document.getElementById('preview-shell').style.width='100%'">Return to full size</button>
+                                                <button id="half-size-preview" class="btn btn-outline-primary" onclick="document.getElementById('preview-shell').style.width='500px'">check tablet view</button>
+                                                <button id="quarter-size-preview" class="btn btn-outline-primary" onclick="document.getElementById('preview-shell').style.width='300px'">check mobile view</button>
+                                            </div>
+                                            <div id="preview-shell" style="box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.23);min-height: 90vh;">
 
                                                 <iframe style="width:100%; min-height:90vh" id="preview-pane"></iframe>
 

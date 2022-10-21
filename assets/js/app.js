@@ -40,6 +40,74 @@ backgrounds = {
     "Space-15": "https://images.unsplash.com/photo-1468276311594-df7cb65d8df6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
 }
 
+// Initialize editorjs
+
+const editor = new EditorJS({ 
+    /** 
+     * Id of Element that should contain the Editor 
+     */ 
+    holder: 'editorjs', 
+    
+    /** 
+     * Available Tools list. 
+     * Pass Tool's class or Settings object for each Tool you want to use 
+     */ 
+    tools: { 
+        heading: Header
+    },
+
+    onReady: () => {
+        
+        // Have to set content explicity because order of execution breaks otherwise
+        user["editor"] = `<h2>About me</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            <h2>Education</h2>
+            <p>Ad perspiciatis deserunt deleniti porro vel similique, omnis esse cupiditate impedit ab, hic libero.</p>
+        `
+        renderPreview()
+    },
+
+    onChange: (api, event) => {
+        parseEditor(this)
+        renderPreview()
+        console.log('Now I know that Editor\'s content changed!', event)
+    },
+
+    data: {
+        blocks: [
+            {
+            type: "heading",
+            data: {
+                text: "About me",
+                level: 2
+                }
+            },
+            {
+                type: "paragraph",
+                data: {
+                    text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+                    }
+                },
+
+            {
+                type: "heading",
+                data: {
+                    text: "Education",
+                    level: 2
+                    }
+                },
+                {
+                    type: "paragraph",
+                    data: {
+                        text: "Ad perspiciatis deserunt deleniti porro vel similique, omnis esse cupiditate impedit ab, hic libero.",
+                        }
+                    },
+        ],
+    }
+}
+
+)
+
 function initializeEditor(){
     // Initializes the editor
     user["name"] = document.getElementById("name").value
@@ -47,7 +115,7 @@ function initializeEditor(){
     user["instagram"] = document.getElementById("instagram").value
     user["theme"] = document.getElementById("theme").value
     user["avatar"] = {'name':"https://avatars.dicebear.com/api/identicon/name.svg"}
-    user["theme-variant"] = backgrounds["Green"]
+    user["variant"] = backgrounds["Green"]
 
     // Fill Empty values
     if (!user["name"]){
@@ -64,72 +132,18 @@ function initializeEditor(){
         user["instagram"] = "https://instagram.com/user";
         document.getElementById("instagram").value = "https://instagram.com/user"
     }
-
-    // Initialize editorjs
-
-    const editor = new EditorJS({ 
-        /** 
-         * Id of Element that should contain the Editor 
-         */ 
-        holder: 'editorjs', 
-        
-        /** 
-         * Available Tools list. 
-         * Pass Tool's class or Settings object for each Tool you want to use 
-         */ 
-        tools: { 
-            heading: Header
-        },
-
-        onReady: () => {parseEditor(editor)},
-
-        onChange: (api, event) => {
-            parseEditor(editor)
-            renderPreview()
-            console.log('Now I know that Editor\'s content changed!', event)
-        },
-
-        data: {
-            blocks: [
-                {
-                type: "heading",
-                data: {
-                    text: "About me",
-                    level: 2
-                    }
-                },
-                {
-                    type: "paragraph",
-                    data: {
-                        text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad perspiciatis deserunt deleniti porro vel similique, omnis esse cupiditate impedit ab, hic libero. Voluptate non fugit accusantium possimus cupiditate repellendus debitis.",
-                        }
-                    },
-
-                {
-                    type: "heading",
-                    data: {
-                        text: "Education",
-                        level: 2
-                        }
-                    },
-                    {
-                        type: "paragraph",
-                        data: {
-                            text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad perspiciatis deserunt deleniti porro vel similique, omnis esse cupiditate impedit ab, hic libero. Voluptate non fugit accusantium possimus cupiditate repellendus debitis.",
-                            }
-                        },
-            ],
-        }
-
-
-
-    })
-
-    renderPreview()
-    // document.getElementById("preview-pane").src = "https://kieranwood.ca/glass-portfolio"
+    
+    // Hide preview size changing buttons if screen size too small
+    if (window.innerWidth <= 600){
+        document.getElementById("half-size-preview").style.display = "none"
+    }
+    if (window.innerWidth <= 400){
+        document.getElementById("quarter-size-preview").style.display = "none"
+    }
 }
 
 function changeFormElement(element){
+    console.log("changing")
     if (element.id === "avatar"){
         // Uploaded new avatar
         user[element.id] = element.files[0]
@@ -146,12 +160,16 @@ function changeFormElement(element){
         user[element.id] = element.value
         document.getElementById("avatar-display").src=`https://avatars.dicebear.com/api/identicon/${user['name']}.svg`
     } 
-    else if (element.id === "theme-variant"){
-        console.log(element.id, element.value)
+    else if (element.id === "variant"){
         user[element.id] = backgrounds[element.value]
     }else{
+        console.log(element.id, element.value)
         user[element.id] = element.value
     }
+
+    // Support theme change
+
+    parseEditor(editor)
     renderPreview()
 }
 
@@ -168,12 +186,10 @@ function renderPreview(){
 
     {{ editor | safe }}
     `
-
-    console.log("variant", user["theme-variant"])
+    console.log("rendering")
     html = nunjucks.renderString(glassTheme, user)
     // TODO Set avatar to new image
     document.getElementById("preview-pane").src = `data:text/html,${encodeURIComponent(html)}`
-    console.log(encodeURIComponent(html))
     // document.getElementById("preview-pane").srcdoc = html
     return html
 }
@@ -211,9 +227,10 @@ function download(){
 
 }
 
-function parseEditor(editor){
+function parseEditor(){
     // Parses the editor js editor and stores HTML string to user["editor"]
-
+    console.log("parsing")
+    console.log(editor)
     result = ""
     editor.save().then((outputData) => {
         for (let block of outputData.blocks) {
@@ -229,6 +246,7 @@ function parseEditor(editor){
             }
         }
         user["editor"] = result
+        renderPreview()
     }).catch((error) => { // If there's an error
         console.log('Saving failed: ', error)
     })

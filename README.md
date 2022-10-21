@@ -13,7 +13,8 @@ An in-browser static site builder. Profilicity aims to allow people with no deve
   - [x] Have site generated and export to HTML (filesaver js)
 - [x] Allow users to write description that will be embedded (editor js)
 - [ ] Make which social media to include optional
-- [ ] Allow user to add their own imagbe
+- [x] Allow user to add their own imagbe
 - [ ] Fix user profile dropdown
 - [ ] Allow JSOn imports
-- [ ] fix theme variant bugs
+- [x] fix theme variant bugs
+- [ ] Figure out scema for variants
