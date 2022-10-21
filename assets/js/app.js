@@ -7,7 +7,7 @@ function initializeEditor(){
     user["github"] = document.getElementById("github").value
     user["instagram"] = document.getElementById("instagram").value
     user["theme"] = document.getElementById("theme").value
-    user["avatar"] = `https://avatars.dicebear.com/api/identicon/${user["name"]}.svg`
+    user["avatar"] = {'name':"https://avatars.dicebear.com/api/identicon/name.svg"}
 
     // Fill Empty values
     if (!user["name"]){
@@ -39,7 +39,15 @@ function initializeEditor(){
          */ 
         tools: { 
             heading: Header
-        }, 
+        },
+
+        onReady: () => {parseEditor(editor)},
+
+        onChange: (api, event) => {
+            parseEditor(editor)
+            renderPreview()
+            console.log('Now I know that Editor\'s content changed!', event)
+        },
 
         data: {
             blocks: [
@@ -83,18 +91,102 @@ function initializeEditor(){
 }
 
 function changeFormElement(element){
-    user[element.id] = element.value
-    // Reset avatar to use new name as seed
-    if (document.getElementById("avatar-display").src.includes("dicebear")){
-        document.getElementById("avatar-display").src=`https://avatars.dicebear.com/api/identicon/${user['name']}.svg`
-    }
     if (element.id === "avatar"){
-        console.log("yeet")
+        // Uploaded new avatar
+        user[element.id] = element.files[0]
         reader = new FileReader();
+        newAvatar = document.getElementById("avatar").files[0]
+
+        // Set avatar to new image
+        reader.readAsDataURL(newAvatar);
         reader.onload = function(e){
             document.getElementById("avatar-display").src = e.target.result
         }
-        reader.readAsDataURL(document.getElementById("avatar").files[0])
-    } 
 
+        // Save avatar as file
+        saveAs(newAvatar, "image.jpg")
+    } else if (document.getElementById("avatar-display").src.includes("dicebear") & element.id === "name"){
+        // Reset avatar to use new name as seed
+        user[element.id] = element.value
+        document.getElementById("avatar-display").src=`https://avatars.dicebear.com/api/identicon/${user['name']}.svg`
+    } else{
+        user[element.id] = element.value
+    }
+}
+
+
+function renderPreview(){
+    // Renders the preview and returns it
+    
+    template = `<h1>{{ name | escape }}</h1>
+    <h2>{{ instagram | escape }}</h2>
+    <h2>{{ github | escape }}</h2>
+    <h2>{{ theme | escape }}</h2>
+
+    <img src="img/{{ avatar.name }}">
+
+    {{ editor | safe }}
+    `
+
+    zip = new JSZip();
+    zip.file("index.html", nunjucks.renderString(template, user));
+    img = zip.folder("img");
+
+    if (user["avatar"].name.startsWith("https://avatars.dicebear.com")){
+
+        fetch(user["avatar"]["name"]).then(function (response) {
+            // The API call was successful!
+            return response.text();
+        }).then(function (html) {
+            // This is the HTML from our response as a text string
+
+            //TODO  Fix this
+            console.log(img)
+            img.file("smile.svg", html, {text:true});
+            console.log(img)
+        }).catch(function (err) {
+            // There was an error
+            console.warn('Something went wrong.', err);
+        });
+    }else{
+        
+        newAvatar = document.getElementById("avatar").files[0]
+        img.file("smile.jpg", newAvatar, {base64: true}); // TODO Add support for more than jpg
+
+    }
+    zip.generateAsync({type:"blob"})
+    .then(function(content) {
+        // see FileSaver.js
+        saveAs(content, "example.zip");
+    });
+
+    return nunjucks.renderString(template, user)
+
+    
+
+}
+
+function parseEditor(editor){
+    // Parses the editor js editor and stores HTML string to user["editor"]
+
+    result = ""
+    editor.save().then((outputData) => {
+        for (let block of outputData.blocks) {
+            block.data // This is the data section
+            switch(block.type){
+                case "heading":
+                    result += `<h${block.data.level}>${block.data.text}</h${block.data.level}>`
+                    break;
+
+                case "paragraph":
+                    result += `<p>${block.data.text}</p>`
+                    break
+            }
+        }
+        user["editor"] = result
+        console.log(renderPreview())
+    }).catch((error) => { // If there's an error
+        console.log('Saving failed: ', error)
+    })
+    
 }

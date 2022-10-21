@@ -91,8 +91,8 @@
                                             <label class="form-label" style="margin-left: 5%;" for="instagram">Instagram</label>
                                                 <input id="instagram" class="form-control form-control-sm" type="text" style="/*width: 90%;*//*margin-left: 5%;*//*margin-bottom: 8px;*/" placeholder="https://instagram.com/user" name="instagram" pattern="^http[s]?:\/\/(www\.)?(.*)?\/?(.)*" required="">
                                             <label class="form-label" style="margin-left: 5%;" for="theme">Theme</label>
-                                                <select class="form-select" name="theme">
-                                                    <option id="theme" value="glass" selected="">Glass Portfolio</option>
+                                                <select  class="form-select" name="theme" id="theme">
+                                                    <option id="glass" value="glass" selected="">Glass Portfolio</option>
                                                 </select>
                                             <div style="margin-left:5%;">
                                                 <h3>Avatar</h3>
@@ -148,6 +148,15 @@
 
     <!-- ejs (templating)-->
     <script src="https://cdn.jsdelivr.net/npm/ejs@3.1.8/ejs.min.js" integrity="sha256-Y2nh8REXJuW3b7k2ytbjm+2IZO0pOsME5Tq+t3HRb8E=" crossorigin="anonymous"></script>
+
+    <!-- FileSaverJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js" integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- JSZIP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" integrity="sha512-XMVd28F1oH/O71fzwBnV7HucLxVwtxf26XV8P4wPk26EDxuGZ91N8bsOttmnomcCD3CS5ZMRL50H0GgOHvegtg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Nunjucks JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/nunjucks/1.0.5/nunjucks.min.js" integrity="sha512-zeDZxYrn0HIwhY9RkkWSuR0b4lXWkzVTaH8aES/wtWSDKqZ5tOgr+SZyNN3kJLYoTgH218lk1AmKuZpz8GsV4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!--Main App js-->
     <script src="assets/js/app.js"></script>
