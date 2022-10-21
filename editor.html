@@ -94,13 +94,50 @@
                                                 <select  class="form-select" name="theme" id="theme">
                                                     <option id="glass" value="glass" selected="">Glass Portfolio</option>
                                                 </select>
+
+                                                <select onchange="changeFormElement(this)"  class="form-select" name="theme-variant" id="theme-variant">
+                                                    <option value="Green" selected="selected" style="color: black;">Green 1</option>
+                                                    <option value="Green-2" style="color: black;">Green 2</option>
+                                                    <option value="Green-3" style="color: black;">Green 3</option>
+                                                    <option value="Green-4" style="color: black;">Green 4</option>
+                                                    <option value="Green-5" style="color: black;">Green 5</option>
+                                                    <option value="Green-6" style="color: black;">Green 6</option>
+
+                                                    <option value="Mountain" style="color: black;">Mountain </option>
+                                                    <option value="Mountain-2" style="color: black;">Mountain 2</option>
+                                                    <option value="Mountain-3" style="color: black;">Mountain 3</option>
+                                                    <option value="Mountain-4" style="color: black;">Mountain 4</option>
+                                                    <option value="Mountain-5" style="color: black;">Mountain 5</option>
+                                                    <option value="Mountain-6" style="color: black;">Mountain 6</option>
+                                                    <option value="Mountain-7" style="color: black;">Mountain 7</option>
+                                                    <option value="Mountain-8" style="color: black;">Mountain 8</option>
+                                                    <option value="Mountain-9" style="color: black;">Mountain 9</option>
+                                    
+                                                    <option style="color: black;" value="Space">Space</option>
+                                                    <option style="color: black;" value="Space-1">Space-1</option>
+                                                    <option style="color: black;" value="Space-2">Space-2</option>
+                                                    <option style="color: black;" value="Space-3">Space-3</option>
+                                                    <option style="color: black;" value="Space-4">Space-4</option>
+                                                    <option style="color: black;" value="Space-5">Space-5</option>
+                                                    <option style="color: black;" value="Space-6">Space-6</option>
+                                                    <option style="color: black;" value="Space-7">Space-7</option>
+                                                    <option style="color: black;" value="Space-8">Space-8</option>
+                                                    <option style="color: black;" value="Space-9">Space-9</option>
+                                                    <option style="color: black;" value="Space-10">Space-10</option>
+                                                    <option style="color: black;" value="Space-11">Space-11</option>
+                                                    <option style="color: black;" value="Space-12">Space-12</option>
+                                                    <option style="color: black;" value="Space-13">Space-13</option>
+                                                    <option style="color: black;" value="Space-14">Space-14</option>
+                                                    <option style="color: black;" value="Space-15">Space-15</option>
+                                                </select>
                                             <div style="margin-left:5%;">
                                                 <h3>Avatar</h3>
                                                 <img id="avatar-display" src="https://avatars.dicebear.com/api/identicon/name.svg" height="200px" width="200px" style="border-radius:50%; object-fit:cover;">
                                                 <br>
                                                 <label for="myfile">Upload an avatar:</label>
+                                                <input onchange="changeFormElement(this)" type="file" id="avatar" name="avatar">
+
                                             </div>
-                                            <input onchange="changeFormElement(this)" type="file" id="avatar" name="avatar">
                                         </form>
                                     </div>
                                 </div>
@@ -157,6 +194,9 @@
 
     <!-- Nunjucks JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/nunjucks/1.0.5/nunjucks.min.js" integrity="sha512-zeDZxYrn0HIwhY9RkkWSuR0b4lXWkzVTaH8aES/wtWSDKqZ5tOgr+SZyNN3kJLYoTgH218lk1AmKuZpz8GsV4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- TEMPORARY TODO REMOVE-->
+    <script src="assets/js/glass-theme.js"></script>
 
     <!--Main App js-->
     <script src="assets/js/app.js"></script>
