@@ -110,12 +110,16 @@ const editor = new EditorJS({
 
 function initializeEditor(){
     // Initializes the editor
-    user["name"] = document.getElementById("name").value
+    // user["name"] = document.getElementById("name").value
+    user["name"] = "John Doe"
     user["github"] = document.getElementById("github").value
     user["instagram"] = document.getElementById("instagram").value
     user["theme"] = document.getElementById("theme").value
-    user["avatar"] = {'name':"https://avatars.dicebear.com/api/identicon/name.svg"}
+    user["avatar"] = "https://avatars.dicebear.com/api/identicon/" + user["name"] + ".svg"
     user["variant"] = backgrounds["Green"]
+    user["preview"] = true
+
+    document.getElementById("avatar-display").src = "https://avatars.dicebear.com/api/identicon/" + user["name"] + ".svg"
 
     // Fill Empty values
     if (!user["name"]){
@@ -146,7 +150,6 @@ function changeFormElement(element){
     console.log("changing")
     if (element.id === "avatar"){
         // Uploaded new avatar
-        user[element.id] = element.files[0]
         reader = new FileReader();
         newAvatar = document.getElementById("avatar").files[0]
 
@@ -155,6 +158,9 @@ function changeFormElement(element){
         reader.onload = function(e){
             document.getElementById("avatar-display").src = e.target.result
         }
+        filepath = document.getElementById("avatar").files[0].name
+        extension = filepath.split(".")[filepath.split(".").length -1]
+        user[element.id] = "img/avatar."+ extension
     } else if (document.getElementById("avatar-display").src.includes("dicebear") & element.id === "name"){
         // Reset avatar to use new name as seed
         user[element.id] = element.value
@@ -176,29 +182,21 @@ function changeFormElement(element){
 
 function renderPreview(){
     // Renders the preview and returns it
-    
-    template = `<h1>{{ name | escape }}</h1>
-    <h2>{{ instagram | escape }}</h2>
-    <h2>{{ github | escape }}</h2>
-    <h2>{{ theme | escape }}</h2>
-
-    <img src="img/{{ avatar.name }}">
-
-    {{ editor | safe }}
-    `
     console.log("rendering")
     html = nunjucks.renderString(glassTheme, user)
     // TODO Set avatar to new image
-    document.getElementById("preview-pane").src = `data:text/html,${encodeURIComponent(html)}`
+    if (user["preview"]){
+        document.getElementById("preview-pane").src = `data:text/html,${encodeURIComponent(html)}`
+    }
     // document.getElementById("preview-pane").srcdoc = html
     return html
 }
 
 function download(){
     // Used to download files
-
+    user["preview"] = false
     template_content= renderPreview() // Get template content
-
+    user["preview"] = true
     // Start building zip file
     zip = new JSZip();
 
@@ -206,16 +204,13 @@ function download(){
     zip.file("index.html", template_content);
 
     // Begin adding avatar
-    img = zip.folder("img");
-    if (user["avatar"].name.startsWith("https://avatars.dicebear.com")){
-        //TODO
-    }else{
-        
+    
+    if (!user["avatar"].startsWith("https://avatars.dicebear.com")){
+        img = zip.folder("img");
         newAvatar = document.getElementById("avatar").files[0]
         filepath = document.getElementById("avatar").files[0].name
         extension = filepath.split(".")[filepath.split(".").length -1]
         img.file("avatar." + extension, newAvatar, {base64: true});
-
     }
 
     // Export zip file

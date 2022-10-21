@@ -17,4 +17,5 @@ An in-browser static site builder. Profilicity aims to allow people with no deve
 - [ ] Fix user profile dropdown
 - [ ] Allow JSOn imports
 - [x] fix theme variant bugs
-- [ ] Figure out scema for variants
+- [ ] Figure out schema for variants
+- [ ] Show user image in previews

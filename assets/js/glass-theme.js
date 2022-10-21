@@ -241,7 +241,11 @@ const glassTheme = `<!DOCTYPE html>
 
     <div class="background">
         <div class="nav">
+        {% if preview %}
             <img src="https://avatars.dicebear.com/api/identicon/{{name}}.svg" style="border-radius: 50%; max-height: 25vh;">
+        {% else %}
+            <img src="{{ avatar }}" style="border-radius: 50%; max-height: 25vh;">
+        {%endif %}
             <h1>{{name}}</h1>
             <ul>
                 <li><a href="{{github}}" target="_blank"><i class="bi bi-github"></i></a></li>
