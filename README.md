@@ -15,7 +15,8 @@ An in-browser static site builder. Profilicity aims to allow people with no deve
 - [ ] Make which social media to include optional
 - [x] Allow user to add their own imagbe
 - [ ] Fix user profile dropdown
-- [ ] Allow JSOn imports
+- [ ] Allow JSON imports
 - [x] fix theme variant bugs
 - [ ] Figure out schema for variants
 - [ ] Show user image in previews
+- [ ] Finalize manta theme

@@ -137,14 +137,6 @@ function initializeEditor(){
         user["instagram"] = "https://instagram.com/user";
         document.getElementById("instagram").value = "https://instagram.com/user"
     }
-    
-    // Hide preview size changing buttons if screen size too small
-    if (window.innerWidth <= 600){
-        document.getElementById("half-size-preview").style.display = "none"
-    }
-    if (window.innerWidth <= 400){
-        document.getElementById("quarter-size-preview").style.display = "none"
-    }
 }
 
 function changeFormElement(element){

@@ -74,3 +74,28 @@ input[type=file]{
   margin:5px;
   
 }
+#half-size-preview{
+  display: none;
+}
+
+#quarter-size-preview{
+  display: none;
+}
+#full-size-preview{
+  display: none;
+}
+
+@media (min-width: 640px){
+  #half-size-preview{
+    display: inline;
+  }
+}
+
+@media (min-width: 580px){
+  #quarter-size-preview{
+    display: inline;
+  }
+  #full-size-preview{
+    display: inline
+  }
+}
