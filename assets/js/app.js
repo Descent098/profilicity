@@ -118,6 +118,7 @@ function initializeEditor(){
     user["avatar"] = "https://avatars.dicebear.com/api/identicon/" + user["name"] + ".svg"
     user["variant"] = backgrounds["Green"]
     user["preview"] = true
+    user["theme"] = "glass"
 
     document.getElementById("avatar-display").src = "https://avatars.dicebear.com/api/identicon/" + user["name"] + ".svg"
 
@@ -168,6 +169,11 @@ function changeFormElement(element){
     } 
     else if (element.id === "variant"){
         user[element.id] = backgrounds[element.value]
+    }else if (element.id === "theme"){
+        if (element.value === "manta"){
+            document.getElementById("variant").style.display= "none" // Hide variant selector
+        }
+        user["theme"] = element.value
     }else{
         console.log(element.id, element.value)
         user[element.id] = element.value
@@ -183,7 +189,18 @@ function changeFormElement(element){
 function renderPreview(){
     // Renders the preview and returns it
     console.log("rendering")
-    html = nunjucks.renderString(glassTheme, user)
+    switch (user["theme"]){
+        case "glass":
+        html = nunjucks.renderString(glassTheme, user)
+        break;
+        case "manta":
+        html = nunjucks.renderString(mantaTheme, user)
+        break;
+        default:
+        html = nunjucks.renderString(glassTheme, user)
+        break;
+    }
+    
     // TODO Set avatar to new image
     if (user["preview"]){
         document.getElementById("preview-pane").src = `data:text/html,${encodeURIComponent(html)}`
