@@ -43,29 +43,11 @@
             <div id="content">
                 <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
                     <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
-                        <ul class="navbar-nav flex-nowrap ms-auto">
-                            <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><i class="fas fa-search"></i></a>
-                                <div class="dropdown-menu dropdown-menu-end p-3 animated--grow-in" aria-labelledby="searchDropdown">
-                                    <form class="me-auto navbar-search w-100">
-                                        <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
-                                            <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </li>
-                            <div class="d-none d-sm-block topbar-divider"></div>
-                            <li class="nav-item dropdown no-arrow">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small">Name</span><img class="border rounded-circle img-profile" src="https://avatars.dicebear.com/api/identicon/name.svg"></a>
-                                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item" href="#"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Settings</a><a class="dropdown-item" href="#"><i class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Activity log</a>
-                                        <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+                        <h3 class="text-dark mb-1">Editor</h3>
                     </div>
                 </nav>
                 <div class="container-fluid">
-                    <h3 class="text-dark mb-1">Editor</h3>
+                    
                 </div>
                 <div class="card">
                     <div class="card-header">
@@ -90,12 +72,53 @@
                                                 <input oninput="changeFormElement(this)" id="github" class="form-control form-control-sm" type="text" placeholder="https://github.com/user" name="github" pattern="^http[s]?:\/\/(www\.)?(.*)?\/?(.)*" required="">
                                             <label class="form-label" for="instagram">Instagram</label>
                                                 <input oninput="changeFormElement(this)" id="instagram" class="form-control form-control-sm" type="text" placeholder="https://instagram.com/user" name="instagram" pattern="^http[s]?:\/\/(www\.)?(.*)?\/?(.)*" required="">
-                                            <label class="form-label" for="theme">Theme</label>
-                                                <select  class="form-select" name="theme" id="theme" onchange="changeFormElement(this)">
-                                                    <option id="glass" value="glass" selected="">Glass Portfolio</option>
-                                                    <option id="manta" value="manta">Manta</option>
-                                                </select>
+                                            <div style="margin-left:5%;">
+                                                <h3>Avatar</h3>
+                                                <img id="avatar-display" height="200px" width="200px" style="border-radius:50%; object-fit:cover;">
+                                                <br>
+                                                <label for="myfile">Upload an avatar:</label>
+                                                <br>
+                                                <input onchange="changeFormElement(this)" type="file" id="avatar" name="avatar">
 
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" role="tabpanel" id="description">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Description</h4>
+                                            <h6 class="text-muted card-subtitle mb-2">Fill out more about yourself</h6>
+                                            <p class="card-text">The text below this is editable, and you can check the preview tab to see how it looks</p>
+                                            <hr style="width: 95%; margin: 0 auto;">
+                                            <div id="editorjs"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" role="tabpanel" id="preview">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Preview</h4>
+                                            <p>Please note custom avatars <strong>will</strong> not show in the preview, but <strong>will</strong> be there in the export</p>
+                                            <div id="preview-buttons">
+                                                <button class="btn btn-primary" onclick="download()">Export</button>
+                                                <button id="full-size-preview" class="btn btn-outline-primary" onclick="document.getElementById('preview-shell').style.width='100%'">Return to full size</button>
+                                                <button id="half-size-preview" class="btn btn-outline-primary" onclick="document.getElementById('preview-shell').style.width='500px'">check tablet view</button>
+                                                <button id="quarter-size-preview" class="btn btn-outline-primary" onclick="document.getElementById('preview-shell').style.width='300px'">check mobile view</button>
+                                            </div>
+
+
+                                            <form>
+                                            <label class="form-label" for="theme">Theme</label>
+                                            <select  class="form-select" name="theme" id="theme" onchange="changeFormElement(this)">
+                                                <option id="absurd" value="absurd">Absurd</option>
+                                                <option id="cover" value="cover">Cover</option>
+                                                <option id="cover-dark" value="cover-dark">Cover Dark</option>
+                                                <option id="glass" value="glass" selected="">Glass</option>
+                                                <option id="manta" value="manta">Manta</option>
+                                                <option id="showcase" value="showcase">Showcase</option>
+                                            </select>
+                                            <label class="form-label" for="variant" id="variant-label">Variant/background</label>
                                                 <select onchange="changeFormElement(this)" class="form-select" name="variant" id="variant">
                                                     <option value="Green" selected="selected">Green 1</option>
                                                     <option value="Green-2">Green 2</option>
@@ -131,40 +154,7 @@
                                                     <option value="Space-14">Space-14</option>
                                                     <option value="Space-15">Space-15</option>
                                                 </select>
-                                            <div style="margin-left:5%;">
-                                                <h3>Avatar</h3>
-                                                <img id="avatar-display" height="200px" width="200px" style="border-radius:50%; object-fit:cover;">
-                                                <br>
-                                                <label for="myfile">Upload an avatar:</label>
-                                                <br>
-                                                <input onchange="changeFormElement(this)" type="file" id="avatar" name="avatar">
-
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" role="tabpanel" id="description">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h4 class="card-title">Description</h4>
-                                            <h6 class="text-muted card-subtitle mb-2">Fill out more about yourself</h6>
-                                            <p class="card-text">The text below this is editable, and you can check the preview tab to see how it looks</p>
-                                            <hr style="width: 95%; margin: 0 auto;">
-                                            <div id="editorjs"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" role="tabpanel" id="preview">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h4 class="card-title">Preview</h4>
-                                            <p>Please note custom avatars <strong>will</strong> not show in the preview, but <strong>will</strong> be there in the export</p>
-                                            <div id="preview-buttons">
-                                                <button class="btn btn-primary" onclick="download()">Export</button>
-                                                <button id="full-size-preview" class="btn btn-outline-primary" onclick="document.getElementById('preview-shell').style.width='100%'">Return to full size</button>
-                                                <button id="half-size-preview" class="btn btn-outline-primary" onclick="document.getElementById('preview-shell').style.width='500px'">check tablet view</button>
-                                                <button id="quarter-size-preview" class="btn btn-outline-primary" onclick="document.getElementById('preview-shell').style.width='300px'">check mobile view</button>
-                                            </div>
+                                            </form>
                                             <div id="preview-shell" style="box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.23);min-height: 90vh;">
 
                                                 <iframe style="width:100%; min-height:90vh" id="preview-pane"></iframe>
@@ -190,7 +180,31 @@
 
     <!-- Editor js -->
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
+    <!--Additional Tools-->
+        <!-- Header -->
+        <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
+        <!-- Delimiter -->
+        <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@latest"></script>
+        <!-- List -->
+        <script src="https://cdn.jsdelivr.net/npm/@editorjs/list@latest"></script>
+        <!-- Checklist -->
+        <script src="https://cdn.jsdelivr.net/npm/@editorjs/checklist@latest"></script>
+        <!-- Quote -->
+        <script src="https://cdn.jsdelivr.net/npm/@editorjs/quote@latest"></script>
+        <!-- Code -->
+        <script src="https://cdn.jsdelivr.net/gh/paraswaykole/editor-js-code@latest/dist/bundle.js"></script>
+        <!-- Embed -->
+        <script src="https://cdn.jsdelivr.net/npm/@editorjs/embed@latest"></script>
+        <!-- Table -->
+        <script src="https://cdn.jsdelivr.net/npm/@editorjs/table@latest"></script>
+        <!-- Link -->
+        <script src="https://cdn.jsdelivr.net/npm/@editorjs/link@latest"></script>
+        <!-- Marker -->
+        <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@latest"></script>
+        <!-- Inline Code -->
+        <script src="https://cdn.jsdelivr.net/npm/@editorjs/inline-code@latest"></script>
+        <!-- Inline Code -->
+        <script src="https://cdn.jsdelivr.net/npm/@editorjs/raw@latest"></script>
 
     <!-- ejs (templating)-->
     <script src="https://cdn.jsdelivr.net/npm/ejs@3.1.8/ejs.min.js" integrity="sha256-Y2nh8REXJuW3b7k2ytbjm+2IZO0pOsME5Tq+t3HRb8E=" crossorigin="anonymous"></script>
@@ -206,7 +220,11 @@
 
     <!-- TEMPORARY TODO REMOVE-->
     <script src="assets/js/glass-theme.js"></script>
-    <script src="assets/js/manta-theme.js"></script>
+    <script src="assets/js/manta-theme.js" defer loading="lazy"></script>
+    <script src="assets/js/showcase-theme.js" defer loading="lazy"></script>
+    <script src="assets/js/absurd-theme.js" defer loading="lazy"></script>
+    <script src="assets/js/cover-theme.js" defer loading="lazy"></script>
+    <script src="assets/js/cover-dark-theme.js" defer loading="lazy"></script>
 
     <!--Main App js-->
     <script src="assets/js/app.js"></script>

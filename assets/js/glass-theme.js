@@ -52,7 +52,10 @@ const glassTheme = `<!DOCTYPE html>
             height: 100vh;
         }
 
-        hr{
+        .content hr{
+            padding-top: 0 !important;
+        }
+        #splitter{
             height: 90vh;
             margin: 0 4%;
             margin-top: 2vh;
@@ -101,7 +104,7 @@ const glassTheme = `<!DOCTYPE html>
             .background{
                 flex-direction: column;
             }
-            hr{
+            #splitter {
                 flex: 0;
                 width: 90% !important;
             }
@@ -138,7 +141,7 @@ const glassTheme = `<!DOCTYPE html>
             .background{
                 flex-direction: column;
             }
-            hr{
+            #splitter{
                 flex: 0;
                 width: 95% !important;
             }
@@ -170,7 +173,7 @@ const glassTheme = `<!DOCTYPE html>
             .background{
                 flex-direction: column;
             }
-            hr{
+            #splitter{
                 flex: 0;
                 width: 95% !important;
             }
@@ -204,7 +207,7 @@ const glassTheme = `<!DOCTYPE html>
             .background{
                 flex-direction: column;
             }
-            hr{
+            #splitter{
                 flex: 0;
                 width: 95% !important;
             }
@@ -254,11 +257,15 @@ const glassTheme = `<!DOCTYPE html>
             </ul>
         </div>
 
-        <hr>
+        <hr id="splitter">
 
         <div class="content">
             {{ editor | safe }}
         </div>
     </div>
-</body>
+    <!-- Highlight js-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js" integrity="sha512-gU7kztaQEl7SHJyraPfZLQCNnrKdaQi5ndOyt4L4UPL/FHDd/uB9Je6KDARIqwnNNE27hnqoWLBq+Kpe4iHfeQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/vs2015.min.css" integrity="sha512-mtXspRdOWHCYp+f4c7CkWGYPPRAhq9X+xCvJMUBVAb6pqA4U8pxhT3RWT3LP3bKbiolYL2CkL1bSKZZO4eeTew==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script>hljs.highlightAll();</script>
+  </body>
 </html>`

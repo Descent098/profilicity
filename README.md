@@ -2,7 +2,9 @@
 
 An in-browser static site builder. Profilicity aims to allow people with no development experience the ability to create an html site to start with.
 
+## Adding new themes
 
+TODO
 
 ## V 0.1.0 TODO
 
@@ -12,11 +14,21 @@ An in-browser static site builder. Profilicity aims to allow people with no deve
   - [x] Add support for single-page sites
   - [x] Have site generated and export to HTML (filesaver js)
 - [x] Allow users to write description that will be embedded (editor js)
-- [ ] Make which social media to include optional
-- [x] Allow user to add their own imagbe
-- [ ] Fix user profile dropdown
-- [ ] Allow JSON imports
+- [x] Allow user to add their own image
+- [x] Fix user profile dropdown
 - [x] fix theme variant bugs
-- [ ] Figure out schema for variants
+- [x] Add more tools to editor
+- [ ] Make which social media to include optional
+- [ ] Refactor and modularize JS
+- [ ] Figure out schema for themes
+  - [ ] Finalize manta theme
+  - [ ] Finalize cover & cover dark theme
+  - [ ] Finalize absurd theme
+  - [ ] Finalize showcase theme
+- [ ] Add short description field
+- [ ] Make docs for creating new themes
+
+## V0.2.0 improvements
+
 - [ ] Show user image in previews
-- [ ] Finalize manta theme
+- [ ] Allow JSON exports/imports
