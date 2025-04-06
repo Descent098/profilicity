@@ -65,7 +65,7 @@ const absurdTheme = `<!DOCTYPE html>
           is-7-widescreen 
           is-4-fullhd is-offset-1-fullhd">
             <figure class="image">
-              <img height="300px" width="300px" style="border-radius: 2rem;" src="https://avatars.dicebear.com/api/identicon/{{name}}.svg">
+              <img height="300px" width="300px" style="border-radius: 2rem;" src="https://api.dicebear.com/9.x/identicon/svg?seed={{name}}">
             </figure>
           </div>
 

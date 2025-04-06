@@ -1379,7 +1379,7 @@ const mantaTheme = `
         </svg>
         <div class="mantine-14arigg">
           <h1 class="mantine-Text-root mantine-Title-root mantine-nhuuc3">
-          <img id="avatar-display" height="200px" width="200px" style="border-radius:10%; object-fit:cover;margin:0 auto; display:block;" src="https://avatars.dicebear.com/api/identicon/{{ name }}.svg">
+          <img id="avatar-display" height="200px" width="200px" style="border-radius:10%; object-fit:cover;margin:0 auto; display:block;" src="https://api.dicebear.com/9.x/identicon/svg?seed={{name}}">
             👋 Hi I&#x27;m<br>
             <span class="mantine-Text-root mantine-6n9thn">{{ name }}</span>
             <!-- -->

@@ -533,7 +533,7 @@ footer div a{
             <div class="column is-6 right-image " data-aos="fade-left">
               <img
                 class="is-rounded"
-                src="https://avatars.dicebear.com/api/initials/{{name}}.svg"
+                src="https://api.dicebear.com/9.x/initials/svg?seed={{name}}"
                 alt=""
               />
             </div>

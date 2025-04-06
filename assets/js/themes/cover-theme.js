@@ -49,7 +49,7 @@ const coverTheme =`<!DOCTYPE html>
             <div class="container has-text-centered">
                 <div class="columns is-vcentered">
                     <div class="column is-5">
-                            <img id="avatar" src="https://avatars.dicebear.com/api/identicon/{{name}}.svg" alt="Description">
+                            <img id="avatar" src="https://api.dicebear.com/9.x/identicon/svg?seed={{name}}" alt="Description">
                     </div>
                     <div class="column is-6 is-offset-1">
                         <h1 class="title is-2">

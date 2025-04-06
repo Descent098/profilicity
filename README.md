@@ -8,7 +8,7 @@ TODO
 
 ## V 0.1.0 TODO
 
-- [x] Allow user to input their personal info (generate profile image based on https://avatars.dicebear.com/api/identicon/{{name}}.svg)
+- [x] Allow user to input their personal info (generate profile image based on https://api.dicebear.com/9.x/identicon/svg?seed={{name}})
 - [x] Write homepage describing what profilicity is, and who it's for
 - [x] Pick templating system
   - [x] Add support for single-page sites

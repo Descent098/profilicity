@@ -82,7 +82,7 @@ const editor = new EditorJS({
    */
   tools: {
     heading: Header,
-    list: List,
+    list: EditorjsList,
     marker: Marker,
     delimiter: Delimiter,
     table: Table,
@@ -150,13 +150,13 @@ function initializeEditor() {
   user["instagram"] = document.getElementById("instagram").value;
   user["theme"] = document.getElementById("theme").value;
   user["avatar"] =
-    "https://avatars.dicebear.com/api/identicon/" + user["name"] + ".svg";
+    "https://api.dicebear.com/9.x/identicon/svg?seed=" + user["name"];
   user["variant"] = backgrounds["Green"];
   user["preview"] = true;
   user["theme"] = "glass";
 
   document.getElementById("avatar-display").src =
-    "https://avatars.dicebear.com/api/identicon/" + user["name"] + ".svg";
+    "https://api.dicebear.com/9.x/identicon/svg?seed=" + user["name"]
 
   // Fill Empty values
   if (!user["name"]) {
@@ -198,7 +198,7 @@ function changeFormElement(element) {
     user[element.id] = element.value;
     document.getElementById(
       "avatar-display"
-    ).src = `https://avatars.dicebear.com/api/identicon/${user["name"]}.svg`;
+    ).src = `https://api.dicebear.com/9.x/identicon/svg?seed=${user["name"]}`;
   } else if (element.id === "variant") {
     user[element.id] = backgrounds[element.value];
   } else if (element.id === "theme") {
@@ -274,7 +274,7 @@ function download() {
 
   // Begin adding avatar
 
-  if (!user["avatar"].startsWith("https://avatars.dicebear.com")) {
+  if (!user["avatar"].startsWith("https://api.dicebear.com")) {
     img = zip.folder("img");
     newAvatar = document.getElementById("avatar").files[0];
     filepath = document.getElementById("avatar").files[0].name;
